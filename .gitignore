@@ -1,0 +1,45 @@
+# Dependencies
+/node_modules/
+/vendor/
+
+# Compiled and packaged output
+/build/
+/dist/
+/coverage/
+/artifacts/
+/playwright-report/
+/test-results/
+/*.zip
+
+# Local environment and secrets
+.env*
+.npmrc
+auth.json
+/secrets/
+*.secret
+*.key
+*.pem
+*.p12
+*.pfx
+/.wp-env.override.json
+
+# Tool caches and logs
+/.cache/
+/.eslintcache
+/.phpcs-cache
+/.stylelintcache
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+/composer.phar
+/.phpunit.result.cache
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+/.idea/
+/.vscode/
+*.swp
+*~
