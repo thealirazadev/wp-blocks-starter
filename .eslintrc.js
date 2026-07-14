@@ -1,8 +1,7 @@
 module.exports = {
 	root: true,
-	extends: [
-		'plugin:@wordpress/eslint-plugin/recommended-with-formatting',
-	],
+	ignorePatterns: [ '**/*.d.ts' ],
+	extends: [ 'plugin:@wordpress/eslint-plugin/recommended-with-formatting' ],
 	parserOptions: {
 		project: './tsconfig.json',
 		tsconfigRootDir: __dirname,

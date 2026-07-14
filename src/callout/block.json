@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wp-blocks-starter/callout",
+	"version": "1.0.0",
+	"title": "Callout",
+	"category": "text",
+	"icon": "info-outline",
+	"description": "Highlight important information.",
+	"keywords": [ "notice", "message" ],
+	"textdomain": "wp-blocks-starter",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"supports": {
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	}
+}
