@@ -26,6 +26,7 @@
 		"@wordpress/components": "29.6.0",
 		"@wordpress/element": "6.11.0",
 		"@wordpress/env": "10.11.0",
+		"@wordpress/eslint-plugin": "22.7.0",
 		"@wordpress/i18n": "5.11.0",
 		"@wordpress/scripts": "30.7.0",
 		"typescript": "5.7.3"

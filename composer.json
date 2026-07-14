@@ -1,0 +1,23 @@
+{
+	"name": "wp-blocks-starter/wp-blocks-starter",
+	"description": "A modern WordPress block plugin starter.",
+	"type": "wordpress-plugin",
+	"license": "MIT",
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "1.2.1",
+		"squizlabs/php_codesniffer": "3.13.5",
+		"wp-coding-standards/wpcs": "3.3.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"platform": {
+			"php": "8.0.0"
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"lint": "phpcs --standard=phpcs.xml.dist"
+	}
+}
