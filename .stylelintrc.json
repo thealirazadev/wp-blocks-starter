@@ -1,3 +1,11 @@
 {
-	"extends": [ "@wordpress/stylelint-config/scss" ]
+	"extends": [ "@wordpress/stylelint-config/scss" ],
+	"rules": {
+		"selector-class-pattern": [
+			"^(wpbs-[a-z0-9]+(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?|is-style-[a-z0-9]+(-[a-z0-9]+)*)$",
+			{
+				"message": "Selector should follow BEM under the wpbs- block root, or be a core is-style-* variation class"
+			}
+		]
+	}
 }
