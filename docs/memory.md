@@ -8,9 +8,14 @@ Running log of project state and decisions. Keep entries short. Log every non-ob
 
 ## In progress
 
-- (none yet)
+- Phase 3 (inspector controls) starting next.
 
 ## Decisions log
+
+- Phase 2 complete: `heading`/`body` attributes, `edit.tsx`/`save.tsx` split out of `index.ts` (matching the planned file tree in `docs/architecture.md`), and a shared `_callout.scss` partial used from `style.scss` for base layout (padding, accent border, heading/body spacing) using `theme.json` spacing/color preset tokens with sane fallbacks.
+- Fixed `.eslintrc.js` to extend `plugin:@wordpress/eslint-plugin/recommended` instead of `recommended-with-formatting`. Reason: `recommended-with-formatting` does not include the conditional TypeScript override (parser, import resolver extensions) that `recommended` layers on when `typescript` is installed; without it, ESLint failed on `.tsx` files and on extensionless relative imports (`./edit`, `./save`) with `no-undef`/`import/no-unresolved`. `@typescript-eslint/*` packages were already present in `node_modules` as a dependency of `@wordpress/eslint-plugin`, so this is a config correction, not a new dependency.
+- Added a `selector-class-pattern` override to `.stylelintrc.json`. Reason: the default WordPress stylelint pattern only allows kebab-case, which rejects the BEM `__`/`--` class names mandated by `docs/rules.md`. The override allows `wpbs-` prefixed BEM classes and core `is-style-*` variation classes only.
+- `wp-env start` could not complete: the sandbox has no outbound network access, so Docker image/tarball downloads for the WordPress environment time out (`ETIMEDOUT`). Verification for phases 2-4 falls back to `npm run build`, `lint:js`, `lint:css`, `lint:php`, `test:unit`, and `npx tsc --noEmit`. This is noted per phase; live wp-env manual QA (inserter, front-end round-trip, console/PHP-notice checks) was not run and should be done by a developer with network access before release.
 
 - Shipped example block is static (attributes serialize into post content via `save`), matching the "attributes stored in post content" data model. Reason: most blocks are static and it is the simpler, clearer reference. The dynamic path (`render.php` + `render_callback` via a `block.json` `render` key) is documented and stubbed but left unused so both patterns are visible without adding server complexity to the default.
 - `apiVersion: 3` chosen deliberately (not 1 or 2). Reason: v3 renders the editor block in the same iframe as the front end, so editor and front-end styles match, which is the modern-workflow lesson this starter exists to teach.
