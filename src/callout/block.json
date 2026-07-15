@@ -21,6 +21,18 @@
 			"source": "html",
 			"selector": ".wpbs-callout__body",
 			"default": ""
+		},
+		"icon": {
+			"type": "string",
+			"default": "info"
+		},
+		"accentColor": {
+			"type": "string",
+			"default": ""
+		},
+		"headingLevel": {
+			"type": "number",
+			"default": 2
 		}
 	},
 	"editorScript": "file:./index.js",
