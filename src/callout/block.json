@@ -9,6 +9,20 @@
 	"description": "Highlight important information.",
 	"keywords": [ "notice", "message" ],
 	"textdomain": "wp-blocks-starter",
+	"attributes": {
+		"heading": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wpbs-callout__heading",
+			"default": ""
+		},
+		"body": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wpbs-callout__body",
+			"default": ""
+		}
+	},
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
