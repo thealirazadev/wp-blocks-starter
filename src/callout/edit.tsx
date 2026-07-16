@@ -2,6 +2,7 @@ import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { createElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import CalloutInspector from './controls';
 import type { CalloutAttributes } from './types';
 
 const CALLOUT_CLASS = 'wpbs-callout';
@@ -20,6 +21,7 @@ export default function CalloutEdit( {
 	return createElement(
 		'div',
 		useBlockProps( { className: CALLOUT_CLASS } ),
+		createElement( CalloutInspector, { attributes, setAttributes } ),
 		createElement( RichText, {
 			tagName: 'h2',
 			className: 'wpbs-callout__heading',

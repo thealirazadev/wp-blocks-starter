@@ -40,6 +40,9 @@ declare module '@wordpress/block-editor' {
 			label: string;
 			onChange: ( value: string | undefined ) => void;
 			value?: string;
+			colors?: ThemeColor[];
+			disableCustomColors?: boolean;
+			clearable?: boolean;
 		} >;
 		colors?: ThemeColor[];
 		disableCustomColors?: boolean;
