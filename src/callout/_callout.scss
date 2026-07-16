@@ -1,13 +1,31 @@
 // Shared base layout for the callout block, used by both editor.scss and
 // style.scss so the editor canvas (apiVersion 3 iframe) and the front end
-// render identically. Only the icon/accent modifiers (phase 3) and style
-// variations (phase 4) build on top of this partial.
+// render identically. Style variations (phase 4) build on top of this
+// partial. The accent token falls back to a neutral theme color when no
+// accentColor attribute is set (see docs/design.md).
 
 .wpbs-callout {
+	--wpbs-callout-accent-resolved: var(
+		--wpbs-callout-accent,
+		var( --wp--preset--color--contrast, currentColor )
+	);
+
 	box-sizing: border-box;
+	display: flex;
+	align-items: flex-start;
+	gap: var( --wp--preset--spacing--20, 0.5rem );
 	min-width: 0;
 	padding: var( --wp--preset--spacing--40, 1rem );
-	border-left: 3px solid var( --wp--preset--color--contrast, currentColor );
+	border-left: 3px solid var( --wpbs-callout-accent-resolved );
+}
+
+.wpbs-callout__icon {
+	flex-shrink: 0;
+	color: var( --wpbs-callout-accent-resolved );
+}
+
+.wpbs-callout__content {
+	min-width: 0;
 }
 
 .wpbs-callout__heading {

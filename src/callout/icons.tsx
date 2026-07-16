@@ -17,12 +17,14 @@ const ICON_PATHS: Record< IconName, string > = {
 
 interface CalloutIconProps {
 	name: IconName;
+	className?: string;
 }
 
-export default function CalloutIcon( { name }: CalloutIconProps ) {
+export default function CalloutIcon( { name, className }: CalloutIconProps ) {
 	return createElement(
 		'svg',
 		{
+			className,
 			viewBox: '0 0 24 24',
 			width: 24,
 			height: 24,
