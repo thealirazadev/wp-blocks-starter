@@ -1,0 +1,104 @@
+# Copyright (C) 2026 
+# This file is distributed under the MIT.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Blocks Starter 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-blocks-starter\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-07-16T20:32:02+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: wp-blocks-starter\n"
+
+#: callout/index.js:1
+msgid "Info"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Success"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Warning"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Tip"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Callout settings"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Icon"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Color"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Accent"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Callout heading…"
+msgstr ""
+
+#: callout/index.js:1
+msgid "Add supporting text…"
+msgstr ""
+
+#. Plugin Name of the plugin
+#: wp-blocks-starter.php
+msgid "WP Blocks Starter"
+msgstr ""
+
+#. Description of the plugin
+#: wp-blocks-starter.php
+msgid "A modern starter for building WordPress blocks."
+msgstr ""
+
+#: includes/blocks.php:125
+msgid "WP Blocks Starter: run `npm run build` to compile blocks"
+msgstr ""
+
+#: src/callout/block.json
+msgctxt "block title"
+msgid "Callout"
+msgstr ""
+
+#: src/callout/block.json
+msgctxt "block description"
+msgid "Highlight important information."
+msgstr ""
+
+#: src/callout/block.json
+msgctxt "block keyword"
+msgid "notice"
+msgstr ""
+
+#: src/callout/block.json
+msgctxt "block keyword"
+msgid "message"
+msgstr ""
+
+#: src/callout/block.json
+msgctxt "block style label"
+msgid "Default"
+msgstr ""
+
+#: src/callout/block.json
+msgctxt "block style label"
+msgid "Bordered"
+msgstr ""
+
+#: src/callout/block.json
+msgctxt "block style label"
+msgid "Filled"
+msgstr ""
