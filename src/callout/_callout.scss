@@ -41,3 +41,28 @@
 .wpbs-callout__body {
 	max-width: 100%;
 }
+
+// Bordered: full outline in the accent color, no fill. Text color is left
+// untouched (inherited from supports.color), so contrast is unaffected.
+.wpbs-callout.is-style-bordered {
+	border: 1px solid var( --wpbs-callout-accent-resolved );
+	border-left-width: 1px;
+}
+
+// Filled: a light accent tint behind the content. Kept low-alpha so the
+// inherited text color keeps its normal (near-black on white by default)
+// contrast; see docs/memory.md for the AA verification note.
+.wpbs-callout.is-style-filled {
+	border-left-width: 3px;
+	background-color: color-mix(
+		in srgb,
+		var( --wpbs-callout-accent-resolved ) 12%,
+		transparent
+	);
+}
+
+// Stronger icon emphasis on the filled variation (see docs/design.md).
+.wpbs-callout.is-style-filled .wpbs-callout__icon {
+	width: 28px;
+	height: 28px;
+}
