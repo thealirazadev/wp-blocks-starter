@@ -38,6 +38,11 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
+	"styles": [
+		{ "name": "default", "label": "Default", "isDefault": true },
+		{ "name": "bordered", "label": "Bordered" },
+		{ "name": "filled", "label": "Filled" }
+	],
 	"supports": {
 		"html": false,
 		"color": {
