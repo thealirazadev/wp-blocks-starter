@@ -1,7 +1,12 @@
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { createElement } from '@wordpress/element';
 
-import { accentSlugToCSSVar } from './constants';
+import {
+	accentSlugToCSSVar,
+	clampHeadingLevel,
+	DEFAULT_ICON,
+	isValidIcon,
+} from './constants';
 import CalloutIcon from './icons';
 import type { CalloutAttributes } from './types';
 
@@ -12,7 +17,11 @@ interface CalloutSaveProps {
 }
 
 export default function CalloutSave( { attributes }: CalloutSaveProps ) {
-	const { heading, body, icon, accentColor, headingLevel } = attributes;
+	const { heading, body, accentColor } = attributes;
+	const icon = isValidIcon( attributes.icon )
+		? attributes.icon
+		: DEFAULT_ICON;
+	const headingLevel = clampHeadingLevel( attributes.headingLevel );
 	const accentVar = accentSlugToCSSVar( accentColor );
 
 	return createElement(

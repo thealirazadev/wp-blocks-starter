@@ -11,7 +11,9 @@ import { __ } from '@wordpress/i18n';
 import {
 	accentSlugToCSSVar,
 	clampHeadingLevel,
+	DEFAULT_ICON,
 	HEADING_LEVELS,
+	isValidIcon,
 } from './constants';
 import CalloutInspector from './controls';
 import CalloutIcon from './icons';
@@ -28,7 +30,11 @@ export default function CalloutEdit( {
 	attributes,
 	setAttributes,
 }: CalloutEditProps ) {
-	const { heading, body, icon, accentColor, headingLevel } = attributes;
+	const { heading, body, accentColor } = attributes;
+	const icon = isValidIcon( attributes.icon )
+		? attributes.icon
+		: DEFAULT_ICON;
+	const headingLevel = clampHeadingLevel( attributes.headingLevel );
 	const accentVar = accentSlugToCSSVar( accentColor );
 
 	return createElement(
