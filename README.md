@@ -57,8 +57,10 @@ npm run lint:js     # ESLint over src/
 npm run lint:css    # stylelint over src/ SCSS
 npm run lint:php    # PHPCS over PHP files (requires composer install)
 npm run test:unit   # Jest unit tests (wp-scripts test-unit-js)
-npm run test:e2e    # Playwright end-to-end tests (requires env:start)
 ```
+
+There are no end-to-end tests yet; the editing round-trip is covered by the manual QA checklist in
+`docs/testing.md`.
 
 `npm run build` and the lint + unit tests must pass before any feature is considered done. See `docs/testing.md`.
 

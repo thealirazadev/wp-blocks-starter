@@ -76,4 +76,4 @@ Rationale: a starter must look correct in any well-built theme without edits. Bi
 
 ## Icons
 
-Four inline SVG icons (`info`, `success`, `warning`, `tip`) live in `icons.tsx` as React elements sized via `currentColor` so they inherit the accent color. They are simple, single-path glyphs (no external icon font, no Dashicons dependency on the front end). Each SVG sets `focusable="false"` and is wrapped by an element with `aria-hidden="true"`.
+Four inline SVG icons (`info`, `success`, `warning`, `tip`) live in `icons.tsx` as React elements sized via `currentColor` so they inherit the accent color. They are simple, single-path glyphs (no external icon font, no Dashicons dependency on the front end). Each SVG sets `focusable="false"` and `aria-hidden="true"` on itself; the wrapper does not need to.

@@ -16,7 +16,6 @@
 		"lint:php": "composer run lint",
 		"format": "wp-scripts format",
 		"test:unit": "wp-scripts test-unit-js",
-		"test:e2e": "wp-scripts test-e2e",
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop",
 		"plugin-zip": "wp-scripts plugin-zip"
