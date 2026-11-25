@@ -2,7 +2,7 @@
 
 ## Philosophy
 
-This is a small, mostly front-end block plugin with no database and no custom server logic, so the testing weight is: linting and type checking (fast, catches most regressions), a thin layer of JS unit tests for pure logic, and manual QA in a real WordPress editor for the editing experience. End-to-end tests are provided as scaffolding for the editing round-trip but are optional to run locally because they require the wp-env container.
+This is a small, mostly front-end block plugin with no database and no custom server logic, so the testing weight is: linting and type checking (fast, catches most regressions), a thin layer of JS unit tests for pure logic, and manual QA in a real WordPress editor for the editing experience. There are no end-to-end tests; the editing round-trip is checked manually (see below).
 
 Rule: `npm run build` plus the lint and unit test commands must all pass before any feature is considered done. A feature that fails the build is not done, regardless of how it looks in the browser.
 
@@ -24,9 +24,9 @@ Rule: `npm run build` plus the lint and unit test commands must all pass before 
 - `npm run test:unit` — `wp-scripts test-unit-js` runs Jest. Cover pure logic only: the icon-name validation, heading-level clamping (2 to 4), and the accent-slug-to-CSS-variable mapping. Do not unit test WordPress internals or the editor DOM here.
 - Test files live next to the code as `*.test.ts`: `src/callout/constants.test.ts` covers the three helpers and `src/callout/block.test.ts` checks the manifest identity (`apiVersion`, name, text domain).
 
-### End-to-end tests (Playwright via wp-scripts, optional locally)
+### End-to-end tests (not included)
 
-- `npm run test:e2e`: `wp-scripts test-e2e` drives a real editor. Requires `npm run env:start` first. The script is wired, but the repository does not ship e2e specs yet; the intended coverage is the critical round-trip: insert Callout, type heading/body, set icon and accent, save, reload, assert no validation error and that content/attributes persisted. Keep this suite small; it is the highest-value but slowest test.
+The repository ships no end-to-end suite and no `test:e2e` script. An earlier `test:e2e` script pointed at `wp-scripts test-e2e` (the legacy Puppeteer runner, not Playwright) with no specs, no config and no e2e dependencies, so it could not run anything; it was removed rather than left looking like coverage. If you add one, use `wp-scripts test-playwright` with `@playwright/test` and `@wordpress/e2e-test-utils-playwright` as dev dependencies, and cover the critical round-trip: insert Callout, type heading/body, set icon and accent, save, reload, assert no validation error and that content/attributes persisted.
 
 ## Manual QA
 
@@ -64,9 +64,6 @@ npm run lint:php            # requires composer install
 npm run test:unit
 npx tsc --noEmit            # standalone type check
 
-# End-to-end (optional locally; requires env:start first)
-npm run test:e2e
-
 # Formatting
 npm run format
 ```
@@ -82,14 +79,13 @@ These are the scripts defined in `package.json`:
 - `lint:php` -> `composer run lint` (PHPCS)
 - `format` -> `wp-scripts format`
 - `test:unit` -> `wp-scripts test-unit-js`
-- `test:e2e` -> `wp-scripts test-e2e`
 - `env:start` -> `wp-env start`
 - `env:stop` -> `wp-env stop`
 - `plugin-zip` -> `wp-scripts plugin-zip`
 
 ## Continuous integration
 
-`.github/workflows/ci.yml` runs on every push and pull request to `main`: one job on Ubuntu with Node 24 that runs `npm ci`, `npm run lint:js`, `npm run lint:css`, `npm run test:unit`, and `npm run build`. CI does not run `npm run lint:php` (it needs Composer), `npx tsc --noEmit`, or `npm run test:e2e` (it needs wp-env); run those locally.
+`.github/workflows/ci.yml` runs on every push and pull request to `main`: one job on Ubuntu with Node 24 that runs `npm ci`, `npm run lint:js`, `npm run lint:css`, `npm run test:unit`, and `npm run build`. CI does not run `npm run lint:php` (it needs Composer) or `npx tsc --noEmit`; run those locally.
 
 ## Definition of "tests pass"
 
