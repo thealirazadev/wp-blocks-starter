@@ -3,9 +3,10 @@ import { createElement } from '@wordpress/element';
 import type { IconName } from './types';
 
 /**
- * Simple single-path glyphs, sized via currentColor so they inherit the
- * accent color. Each is presentational only; the wrapping element in
- * edit/save carries aria-hidden, not the SVG itself.
+ * Simple single-path glyphs, filled with currentColor so they inherit the
+ * accent color. Each is presentational only, so the SVG itself carries
+ * aria-hidden and focusable="false"; the wrapping element in edit/save
+ * does not need to.
  */
 const ICON_PATHS: Record< IconName, string > = {
 	info: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-6h2Zm0-8h-2V7h2Z',
