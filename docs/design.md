@@ -70,7 +70,7 @@ Rationale: a starter must look correct in any well-built theme without edits. Bi
 - Semantic markup: the heading is a real `h2`/`h3`/`h4`, the body is a `<p>`. The container is a `<div>`; do not use a heading or list where a div belongs.
 - Heading levels: authors choose h2 to h4 so the callout fits the surrounding document outline. We deliberately do not allow h1 (reserved for the page/post title) or skipping below h4. Document this constraint in the control's help text.
 - Decorative icon: the icon is presentational and carries `aria-hidden="true"`; it must not be the only means of conveying meaning. Meaning comes from the heading/body text, not the icon alone.
-- Contrast: default palette combinations for each style variation must meet WCAG AA (4.5:1 for body text, 3:1 for large heading text and for the border/icon against the background). The Filled variation's tinted background must be verified against the body text token. Note results in `docs/memory.md`.
+- Contrast: default palette combinations for each style variation must meet WCAG AA (4.5:1 for body text, 3:1 for large heading text and for the border/icon against the background). The Filled variation's tinted background must be verified against the body text token with a contrast tool on the active theme.
 - Focus: editor controls keep visible focus states. On the front end the block is static content with no interactive controls of its own; any links inside RichText inherit the theme's focus styling.
 - Motion/color independence: no animation; information is never conveyed by color alone (icon + text carry the message; color is emphasis only).
 

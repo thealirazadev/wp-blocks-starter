@@ -22,15 +22,25 @@ Rule: `npm run build` plus the lint and unit test commands must all pass before 
 ### Unit tests (Jest via wp-scripts)
 
 - `npm run test:unit` — `wp-scripts test-unit-js` runs Jest. Cover pure logic only: the icon-name validation, heading-level clamping (2 to 4), and the accent-slug-to-CSS-variable mapping. Do not unit test WordPress internals or the editor DOM here.
-- Test files live next to the code as `*.test.ts` (for example `src/callout/constants.test.ts`).
+- Test files live next to the code as `*.test.ts`: `src/callout/constants.test.ts` covers the three helpers and `src/callout/block.test.ts` checks the manifest identity (`apiVersion`, name, text domain).
 
 ### End-to-end tests (Playwright via wp-scripts, optional locally)
 
-- `npm run test:e2e` — `wp-scripts test-e2e` drives a real editor. Requires `npm run env:start` first. Covers the critical round-trip: insert Callout, type heading/body, set icon and accent, save, reload, assert no validation error and that content/attributes persisted. Keep this suite small; it is the highest-value but slowest test.
+- `npm run test:e2e`: `wp-scripts test-e2e` drives a real editor. Requires `npm run env:start` first. The script is wired, but the repository does not ship e2e specs yet; the intended coverage is the critical round-trip: insert Callout, type heading/body, set icon and accent, save, reload, assert no validation error and that content/attributes persisted. Keep this suite small; it is the highest-value but slowest test.
 
 ## Manual QA
 
-Manual testing is the primary way we validate the editing experience, because the value of the block is how it feels in Gutenberg. For each phase, run the "Manual test checklist" in `docs/phases.md` and the shared "Phase verification" list (unhappy paths, empty states, long inputs). Do manual QA in wp-env with at least the default block theme, and spot-check one other block theme to confirm `theme.json` tokens resolve.
+Manual testing is the primary way we validate the editing experience, because the value of the block is how it feels in Gutenberg. Do manual QA in wp-env with at least the default block theme, and spot-check one other block theme to confirm `theme.json` tokens resolve.
+
+Checklist:
+
+- `npm run build`, then activate the plugin: it activates cleanly. With `build/` renamed away, wp-admin shows one notice telling you to run `npm run build` and no fatal error.
+- Insert a Callout, type a heading and body, save, reload: no block-validation warning and the content is intact; the front end renders with the block styles. Two Callouts in one post persist independently.
+- Change the icon, pick an accent from the palette, clear it, and switch the heading between H2, H3 and H4: the editor and front end update and persist, and a cleared accent falls back to the neutral default.
+- Switch between Default, Bordered and Filled: each looks distinct and persists across reload. Run a contrast check on Filled body text (at least 4.5:1).
+- Tab through the inspector and toolbar controls: each has a visible focus ring. Front-end markup has a real heading tag, a `<p>` body and `aria-hidden="true"` on the icon.
+- Edge cases: an empty heading and body save without a crash and with valid markup; a very long heading and multi-paragraph body wrap without horizontal overflow; double-clicking Update creates no duplicate blocks; the published page renders without network access.
+- No browser console errors and no PHP notices in the wp-env log.
 
 ## Exact commands
 
@@ -61,9 +71,9 @@ npm run test:e2e
 npm run format
 ```
 
-## package.json script names (target)
+## package.json script names
 
-These are the script names the above commands assume; wire them in Phase 1:
+These are the scripts defined in `package.json`:
 
 - `start` -> `wp-scripts start`
 - `build` -> `wp-scripts build`
@@ -76,6 +86,10 @@ These are the script names the above commands assume; wire them in Phase 1:
 - `env:start` -> `wp-env start`
 - `env:stop` -> `wp-env stop`
 - `plugin-zip` -> `wp-scripts plugin-zip`
+
+## Continuous integration
+
+`.github/workflows/ci.yml` runs on every push and pull request to `main`: one job on Ubuntu with Node 24 that runs `npm ci`, `npm run lint:js`, `npm run lint:css`, `npm run test:unit`, and `npm run build`. CI does not run `npm run lint:php` (it needs Composer), `npx tsc --noEmit`, or `npm run test:e2e` (it needs wp-env); run those locally.
 
 ## Definition of "tests pass"
 

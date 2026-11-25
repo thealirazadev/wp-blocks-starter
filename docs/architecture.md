@@ -56,7 +56,7 @@ wp-blocks-starter/
   languages/
     wp-blocks-starter.pot        Translation template
   docs/
-    PRD.md architecture.md rules.md design.md phases.md testing.md memory.md launch-checklist.md
+    architecture.md decisions.md design.md testing.md
   package.json
   package-lock.json              Committed lockfile
   composer.json
