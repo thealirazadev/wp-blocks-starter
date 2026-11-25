@@ -71,11 +71,11 @@ wp-blocks-starter/
   src/callout/              The example block source (block.json, TS/TSX, SCSS)
   build/                    Compiled output from wp-scripts (gitignored)
   languages/                Translation template (.pot)
-  docs/                     Planning and handoff documentation
+  docs/                     Architecture, design, testing, and design decisions
   package.json / composer.json / tsconfig.json / phpcs.xml.dist
 ```
 
-See `docs/architecture.md` for the full tree and rationale, and `docs/phases.md` for the build order.
+See `docs/architecture.md` for the full tree and rationale, and `docs/decisions.md` for the design decisions behind the block and the tooling.
 
 ## License
 

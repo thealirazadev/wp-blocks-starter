@@ -1,8 +1,8 @@
-// Shared base layout for the callout block, used by both editor.scss and
-// style.scss so the editor canvas (apiVersion 3 iframe) and the front end
-// render identically. Style variations (phase 4) build on top of this
-// partial. The accent token falls back to a neutral theme color when no
-// accentColor attribute is set (see docs/design.md).
+// Shared base layout for the callout block, loaded through style.scss so the
+// editor canvas (apiVersion 3 iframe) and the front end render identically.
+// The style variations below build on top of this base. The accent token
+// falls back to a neutral theme color when no accentColor attribute is set
+// (see docs/design.md).
 
 .wpbs-callout {
 	--wpbs-callout-accent-resolved: var(
@@ -51,7 +51,8 @@
 
 // Filled: a light accent tint behind the content. Kept low-alpha so the
 // inherited text color keeps its normal (near-black on white by default)
-// contrast; see docs/memory.md for the AA verification note.
+// contrast: 88% of the original background survives the mix, so the
+// luminance shift behind the text is small.
 .wpbs-callout.is-style-filled {
 	border-left-width: 3px;
 	background-color: color-mix(
