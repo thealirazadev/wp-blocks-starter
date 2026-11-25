@@ -25,6 +25,13 @@ describe( 'clampHeadingLevel', () => {
 		expect( clampHeadingLevel( 6 ) ).toBe( 2 );
 		expect( clampHeadingLevel( 'h3' ) ).toBe( 2 );
 	} );
+
+	it( 'rounds fractional levels before checking the range', () => {
+		expect( clampHeadingLevel( 3.4 ) ).toBe( 3 );
+		expect( clampHeadingLevel( 3.6 ) ).toBe( 4 );
+		expect( clampHeadingLevel( 4.5 ) ).toBe( 2 );
+		expect( clampHeadingLevel( NaN ) ).toBe( 2 );
+	} );
 } );
 
 describe( 'accentSlugToCSSVar', () => {
